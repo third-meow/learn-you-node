@@ -1,17 +1,17 @@
-var fs = require('fs');
+let fs = require('fs');
 
 function filter(dir, etxn, callback){
-	fs.readdir(dir, function sort(err, contents){
+	fs.readdir(dir, (err, contents) => {
 		if (err){
 			callback(err, []);
 		}else{
-			var sortedList = [];
-			for(var i = 0; i < contents.length; i++){
-				var file = (contents[i].split('.'));
+			let sortedList = [];
+			contents.forEach((e) => {
+				let file = (e.split('.'));
 				if (file[1] == etxn){
-					sortedList.push(contents[i]);
+					sortedList.push(e);
 				}
-			}
+			});
 			callback(err, sortedList);
 		}
 	});

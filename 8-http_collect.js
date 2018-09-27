@@ -1,17 +1,17 @@
 http = require('http')
 
-var stop = false;
+let stop = false;
 
-http.get(process.argv[2], function callback(response){
+http.get(process.argv[2], (response) => {
 	content = "";
 	response.setEncoding('utf8');
 
 	//get data, add it to content
-	response.on("data", function out(data){
+	response.on("data", (data) => {
 		content += data;
 	});
 
-	response.on("end", function print(){
+	response.on("end", () => {
 		console.log(content.length);
 		console.log(content);
 	});

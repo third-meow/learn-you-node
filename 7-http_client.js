@@ -1,9 +1,9 @@
-http = require('http')
+let http = require('http')
 
 
-http.get(process.argv[2], function callback(response){
+http.get(process.argv[2], (response) => {
 	response.setEncoding('utf8');
-	response.on("data", function out(data){
+	response.on("data", (data) => {
 		console.log(data);
 	});
 });

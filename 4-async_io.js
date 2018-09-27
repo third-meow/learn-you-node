@@ -1,25 +1,22 @@
 "use strict";
 
-var fs = require('fs');
+let fs = require('fs');
 
-var fileLineCount = 0;
+let fileLineCount = 0;
 
 function doAnExamion(callBackFunc){
-	fs.readFile(process.argv[2],function doneReading(err,contents){
+	fs.readFile(process.argv[2], (err, contents) => {
 		if(err){
 			throw err;
 		}else{
-			var fileAry = contents.toString().split('\n');
+			let fileAry = contents.toString().split('\n');
 			fileLineCount = fileAry.length - 1
-			callBackFunc();
+			callBackFunc(fileLineCount);
 		}
 	})
 }
 
-
-function logIt(){
-	console.log(fileLineCount);
-}
-
-doAnExamion(logIt);
+doAnExamion((lc) => {
+	console.log(lc);
+});
 

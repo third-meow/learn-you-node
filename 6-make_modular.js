@@ -1,14 +1,13 @@
 
-filt = require('./make_modular_mod')
+filt = require('./6-make_modular_mod')
 
-function func(err, data){
+filt(process.argv[2], process.argv[3], (err, data) => {
 	if(err){
 		throw err;
 	}else{
-		for(var i = 0; i < data.length; i++){
-			console.log(data[i]);
-		}
+		data.forEach((e) => {
+			console.log(e);
+		});
 	}
-}
+});
 
-filt(process.argv[2], process.argv[3], func)
